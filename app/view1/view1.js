@@ -122,4 +122,26 @@ angular.module('myApp.view1', ['ngRoute'])
 
         $scope.myOrderProperty = 'id';
 
+        $scope.alert = (arg) => alert(arg);
+
+        function unique(arr) {
+          const obj = {};
+
+          for (let c = 0; c < arr.length; c++) {
+            const str = arr[c];
+            obj[str] = true;
+          }
+
+          return Object.keys(obj);
+        }
+
+        $scope.allTypes = $scope.pokemons.reduce((memo, el) => {
+            memo = memo.concat(el.type);
+            return memo;
+        }, []);
+
+        $scope.types = unique($scope.allTypes);   
+
+        $scope.myFilterProperty = $scope.types[0];     
+
     });
